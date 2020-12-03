@@ -1,6 +1,6 @@
-use std::io::{self, BufReader};
-use std::io::prelude::*;
 use std::fs::File;
+use std::io::prelude::*;
+use std::io::{self, BufReader};
 
 fn main() -> io::Result<()> {
     let f = File::open("src/day2/input_day2.txt")?;

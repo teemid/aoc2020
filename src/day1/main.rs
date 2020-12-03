@@ -1,6 +1,6 @@
-use std::io::{self, BufReader};
-use std::io::prelude::*;
 use std::fs::File;
+use std::io::prelude::*;
+use std::io::{self, BufReader};
 
 fn main() -> io::Result<()> {
     let mut numbers: Vec<u32> = vec![];
