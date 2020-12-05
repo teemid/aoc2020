@@ -1,7 +1,7 @@
+use std::collections::HashMap;
 use std::fs::File;
 use std::io::prelude::*;
 use std::io::{self, BufReader};
-use std::collections::HashMap;
 
 fn main() -> io::Result<()> {
     let f = File::open("src/day4/input_day4.txt")?;
@@ -64,17 +64,17 @@ fn check_passport(passport: &HashMap<String, String>) -> bool {
     for expected in expected_fields.iter() {
         let s = expected.to_string();
         if !passport.contains_key(&s) {
-            return false
+            return false;
         }
 
         let value = passport.get(&s);
         let is_valid = match value {
             Some(val) => validate_field(&s, val),
-            _ => false
+            _ => false,
         };
 
         if !is_valid {
-            return false
+            return false;
         }
     }
 
@@ -90,50 +90,50 @@ fn validate_field(field: &String, value: &String) -> bool {
         "hcl" => validate_hcl(value),
         "ecl" => validate_ecl(value),
         "pid" => validate_pid(value),
-        _ => false
+        _ => false,
     }
 }
 
 fn validate_byr(value: &String) -> bool {
     if value.len() != 4 {
-        return false
+        return false;
     }
 
     match value.parse() {
         Ok(byr) => (1920 <= byr && byr <= 2002),
-        _ => false
+        _ => false,
     }
 }
 
 fn validate_iyr(value: &String) -> bool {
     if value.len() != 4 {
-        return false
+        return false;
     }
 
     match value.parse() {
         Ok(byr) => (2010 <= byr && byr <= 2020),
-        _ => false
+        _ => false,
     }
 }
 
 fn validate_eyr(value: &String) -> bool {
     if value.len() != 4 {
-        return false
+        return false;
     }
 
     match value.parse() {
         Ok(byr) => (2020 <= byr && byr <= 2030),
-        _ => false
+        _ => false,
     }
 }
 
 fn validate_hgt(value: &String) -> bool {
     if value.ends_with("in") {
         let len = value.len();
-        let value = &value[..len-2];
+        let value = &value[..len - 2];
         let result = match value.parse() {
             Ok(height) => (59 <= height && height <= 76),
-            _ => false
+            _ => false,
         };
 
         return result;
@@ -141,10 +141,10 @@ fn validate_hgt(value: &String) -> bool {
 
     if value.ends_with("cm") {
         let len = value.len();
-        let value = &value[..len-2];
+        let value = &value[..len - 2];
         let result = match value.parse() {
             Ok(height) => (150 <= height && height <= 193),
-            _ => false
+            _ => false,
         };
 
         return result;
@@ -186,13 +186,13 @@ fn validate_ecl(value: &String) -> bool {
         "grn" => true,
         "hzl" => true,
         "oth" => true,
-        _ => false
+        _ => false,
     }
 }
 
 fn validate_pid(value: &String) -> bool {
     if value.len() != 9 {
-        return false
+        return false;
     }
 
     for c in value.chars() {

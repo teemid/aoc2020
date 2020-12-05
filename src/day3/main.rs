@@ -19,7 +19,7 @@ fn main() -> io::Result<()> {
     }
 
     let count1 = do_part1(&map);
-    let count2  = do_part2(&map);
+    let count2 = do_part2(&map);
     println!("Part 1: {}", count1);
     println!("Part 2: {}", count2);
 
