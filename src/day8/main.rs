@@ -74,6 +74,9 @@ impl VM {
             }
 
             self.did_break_on_inf_loop = false;
+            self.accumulator = 0;
+            self.instruction_pointer = 0;
+            self.completed_instructions = HashSet::new();
 
             {
                 let op = self.ops.get_mut(instruction).unwrap();
